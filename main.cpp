@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include "Tokenizer.hpp"
 
 int main(int argc, char *argv[]) {
@@ -20,8 +21,8 @@ int main(int argc, char *argv[]) {
         exit(2);
     }
 
-    // We now know that the input file exists and we can read from it. Here, we will close it
-    // and give Tokenizer the name of the file so it can open and use it. We also could give
+    // We now know that the input file exists, and we can read from it. Here, we will close it
+    // and give Tokenizer the name of the file, so it can open and use it. We also could give
     // Tokenizer 'inputStream' so that it just uses it.
     inputStream.close();
 

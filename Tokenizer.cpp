@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+
 #include "Tokenizer.hpp"
 
 Tokenizer::Tokenizer(std::string name): lineNumber{1},
@@ -13,8 +14,13 @@ Tokenizer::Tokenizer(std::string name): lineNumber{1},
 
 bool Tokenizer::charOfInterest(char c) {
     // is c the initial (or the sole) character of a token?
+    if(std::isspace(c) || std::isalpha(c) || c == '<' || c == '>') //special characters that we have to keep track of
+    {
+        return true; // if c is charOfInterest, then return true
+    }
 
-    return true;   // you need to replace this with code that compares c with characters like '<', '>', etc.
+    return false; //or else no char of interest
+
 }
 
 Token Tokenizer::getToken() {
@@ -28,6 +34,15 @@ Token Tokenizer::getToken() {
 
     while( inputStream.get(c) && ! charOfInterest(c) ) {
         // keep track of the line number and the character position here.
+        if(c == '\n') //check for new line
+        {
+            lineNumber++; //adding one to line number
+            charPosition = 1; //reset the character position
+        }else
+        {
+            charPosition++; //or else keep track of the line position
+        }
+
     }
 
     Token token(lineNumber, charPosition);
@@ -39,11 +54,22 @@ Token Tokenizer::getToken() {
         // be a letter. If it is, then read the tag name, create an
         // open tag token for it. If inputStream.peek() is not a letter,
         // you will return a token that represents "random" open angle-bracket.
+        char peekingChar = inputStream.peek();
+        char carryingTag;
+        if(std::isalpha(peekingChar))
+        {
+            inputStream.get(carryingTag);
+        }
 
-        // Let's assume that there was a tag name after the < and that it contained
-        // em. Here is how we create a token for it.
-        std::string tName = "em"; // suppose we have read and stored em in tName -- this is a hard-coded example for demo
-        token.makeOpenTag(tName);
+
+
+        /*
+               Let's assume that there was a tag name after the < and that it contained
+               em. Here is how we create a token for it.
+
+               std::string tName = "em"; // suppose we have read and stored em in tName -- this is a hard-coded example for demo
+               token.makeOpenTag(tName);
+            */
     } else if( c == '>' ) {
         token.isCloseAngleBracket() = true;
         return token;

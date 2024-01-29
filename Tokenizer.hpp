@@ -8,6 +8,7 @@
 
 #include <string>
 #include <fstream>
+#include <map>
 #include "Token.hpp"
 
 class Tokenizer {
