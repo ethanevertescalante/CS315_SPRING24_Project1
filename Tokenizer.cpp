@@ -55,6 +55,8 @@ Token Tokenizer::getToken() {
         // open tag token for it. If inputStream.peek() is not a letter,
         // you will return a token that represents "random" open angle-bracket.
 
+        token.isOpenTag() = true; //open tag is true;
+
         //declaration
         char peekingChar = inputStream.peek();
         char carryingChar;
@@ -62,6 +64,7 @@ Token Tokenizer::getToken() {
 
         if(std::isalpha(peekingChar)) //checking if the peekingChar is an alphabetical character
         {
+
             inputStream.get(carryingChar); //getting the first letter
             tName += carryingChar; //moving the first letter into tName (name of tag)
             while(carryingChar != ' ') //while a space is not the carrying character
@@ -71,7 +74,9 @@ Token Tokenizer::getToken() {
             }
         }
 
+
         token.makeOpenTag(tName);
+
 
 
 
@@ -85,7 +90,7 @@ Token Tokenizer::getToken() {
     } else if( c == '>' ) {
         token.isCloseAngleBracket() = true;
         return token;
-    } else// ... more if-else statements here, followed by a final else.
+    }// ... more if-else statements here, followed by a final else.
 
 
     return token;
