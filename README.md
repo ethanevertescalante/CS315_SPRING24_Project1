@@ -1,4 +1,4 @@
-Hello, My name is Ethan Escalante. I am currently a Junior at Sonoma State University studying Computer Science.
+Hello, My name is Ethan Escalante. I am currently a Sophmore at Sonoma State University studying Computer Science.
 
 Here you will find some of the projects I have recently been working on. Check out the projects tab, which is label by year and language of the project.
 
