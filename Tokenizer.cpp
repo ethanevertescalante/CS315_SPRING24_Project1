@@ -55,8 +55,6 @@ Token Tokenizer::getToken() {
         // open tag token for it. If inputStream.peek() is not a letter,
         // you will return a token that represents "random" open angle-bracket.
 
-        token.isOpenTag() = true; //open tag is true;
-
         //declaration
         char peekingChar = inputStream.peek();
         char carryingChar;
@@ -66,18 +64,17 @@ Token Tokenizer::getToken() {
         {
 
             inputStream.get(carryingChar); //getting the first letter
-            tName += carryingChar; //moving the first letter into tName (name of tag)
-            while(carryingChar != ' ') //while a space is not the carrying character
+            while(carryingChar != ' ' && carryingChar != '>') //while a space is not the carrying character
             {
                 tName += carryingChar; //add the next character to tName (name of tag)
+                inputStream.get(carryingChar);
 
             }
+
+
         }
 
-
         token.makeOpenTag(tName);
-
-
 
 
         /*

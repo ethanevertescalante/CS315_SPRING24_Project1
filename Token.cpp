@@ -43,7 +43,9 @@ void Token::print() {
     } else if(isCloseStandAloneTag()) {
         std::cout << "[" << _lineNumber << ", " << _charPos << "] ";
         std::cout << "/>";
-    } else {  // more else if's before this else
+    }else if(isCloseAngleBracket()){
+        std::cout << ">" << std::endl;
+    }else {  // more else if's before this else
         std::cout << "Unknown token\n";
     }
 }

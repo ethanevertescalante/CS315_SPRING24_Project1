@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     std::ifstream inputStream;
     inputStream.open(inputFile, std::ios::in);    // open for reading
     if( ! inputStream.is_open()) {
-        std::cout << "Unable top open " << argv[1] << ". Terminating...";
+        std::cout << "Unable to open " << argv[1] << ". Terminating...";
         std::cout << strerror(errno) << std::endl;
         exit(2);
     }
@@ -31,20 +31,20 @@ int main(int argc, char *argv[]) {
     // and give Tokenizer the name of the file, so it can open and use it. We also could give
     // Tokenizer 'inputStream' so that it just uses it.
     inputStream.close();
-
-   // Tokenizer tokenizer(argv[1]);   // use the first argument, which contains the name of the input file
+/*
+    Tokenizer tokenizer(inputFile);   // use the first argument, which contains the name of the input file
     // to create an instance of Tokenizer.
-    //Token token = tokenizer.getToken();  // get the first token.
+    Token token = tokenizer.getToken();  // get the first token.
 
-  //  token.print();
-
+    token.print();
+*/
 
     // this is what the main function for your solution to phase 1 should look like.
 
-    Tokenizer tokenizer(argv[1]);
+    Tokenizer tokenizer(inputFile);
     Token token = tokenizer.getToken();  // get the first token to start the while loop
 
-    while( ! token.endOfFile() ) {
+    while( ! token.endOfFile()) {
         token.print();
         token = tokenizer.getToken();
     }
