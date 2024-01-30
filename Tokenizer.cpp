@@ -33,19 +33,18 @@ Token Tokenizer::getToken() {
         exit(2);
     }
 
-    while( inputStream.get(c) && !charOfInterest(c) ) {
+    while( inputStream.get(c) && ! charOfInterest(c) ) {
         // keep track of the line number and the character position here.
         if(c == '\n') //check for new line
         {
             lineNumber++; //adding one to line number
         }
         charPosition++;
-
     }
     //declarations
     char peekingChar = inputStream.peek();
     char carryingChar;
-    std::string tName;
+    std::string tName = "";
 
     Token token(lineNumber, charPosition);
     if( inputStream.eof() ) {
@@ -65,7 +64,6 @@ Token Tokenizer::getToken() {
             {
                 tName += carryingChar; //add the next character to tName (name of tag)
                 inputStream.get(carryingChar);
-
             }
 
 
@@ -73,6 +71,7 @@ Token Tokenizer::getToken() {
         else if(peekingChar == '/')
         {
             inputStream.get(carryingChar);
+            //TODO: according to the debugger, anytime there is a '>', it is skipped, causing a a Closetag to not be created, I believe that this code is causing this, figure it out
             while(carryingChar != ' ' && carryingChar != '>')
             {
                 tName += carryingChar;
