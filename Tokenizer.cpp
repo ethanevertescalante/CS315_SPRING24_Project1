@@ -13,9 +13,9 @@ Tokenizer::Tokenizer(std::string name): lineNumber{1},
 }
 
 bool Tokenizer::charOfInterest(char c) {
-    // is c the initial (or the sole) character of a token?
+    // is c the initial (or the sole) character of a token
 
-    if(c == '<' || c == '>' || c == '/'){ // if c is charOfInterest, then return true
+    if(c == '<' || c == '>'){ // if c is charOfInterest, then return true
         return true;
     }
     return false;
@@ -32,10 +32,6 @@ Token Tokenizer::getToken() {
 
     while( inputStream.get(c) && !charOfInterest(c) ) {
         // keep track of the line number and the character position here.
-        if(c == '\n')
-        {
-            lineNumber++;
-        }
 
 
     }
@@ -43,7 +39,7 @@ Token Tokenizer::getToken() {
     //declarations
     char peekingChar = inputStream.peek();
     char carryingChar;
-    std::string tName = "";
+    std::string tName;
 
     Token token(lineNumber, charPosition);
     if( inputStream.eof() ) {
@@ -55,34 +51,45 @@ Token Tokenizer::getToken() {
         // open tag token for it. If inputStream.peek() is not a letter,
         // you will return a token that represents "random" open angle-bracket.
 
-        if(std::isalpha(peekingChar)) //checking if the peekingChar is an alphabetical character
-        {
+        if(std::isalpha(peekingChar)){ //checking if the peekingChar is an alphabetical character
 
             inputStream.get(carryingChar); //getting the first letter
-            while(carryingChar != ' ' && carryingChar != '>') //while a space is not the carrying character
+            while(carryingChar != '>' && carryingChar != ' ')
             {
                 tName += carryingChar; //add the next character to tName (name of tag)
                 inputStream.get(carryingChar);
+
+
                 if(carryingChar == '>')
                 {
                     inputStream.putback(carryingChar);
                 }
+
             }
 
+            token.makeOpenTag(tName);
 
-        }
-        else if(peekingChar == '/')
-        {
+        }else if(peekingChar == '/'){
+
             inputStream.get(carryingChar);
-            while(carryingChar != ' ' && carryingChar != '>')
+            //TODO: Need to implement both the counter, as well as the stand alone tag
+            if(carryingChar == '>')
             {
+                token.isCloseStandAloneTag() = true;
+                token.isCloseAngleBracket() = false;
+            }
+            while(carryingChar != ' ' && carryingChar != '>') {
+
                 tName += carryingChar;
                 inputStream.get(carryingChar);
 
-            }
-        }
+                if(carryingChar == '>'){
+                    inputStream.putback(carryingChar);
+                }
 
-        token.makeOpenTag(tName);
+            }
+            token.makeCloseTag(tName);
+        }
 
 
 
@@ -95,18 +102,6 @@ Token Tokenizer::getToken() {
             */
     } else if( c == '>') {
         token.isCloseAngleBracket() = true;
-
-        token.makeCloseTag(tName);
-    }else if(c == '/'){
-        if(peekingChar == '>')
-        {
-            tName = '/' ;
-            token.isCloseTag() = true;
-            token.makeCloseTag(tName);
-
-        }else{
-            return token;
-        }
     }
     // ... more if-else statements here, followed by a final else.
 
