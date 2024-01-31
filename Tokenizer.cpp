@@ -32,8 +32,10 @@ Token Tokenizer::getToken() {
 
     while( inputStream.get(c) && !charOfInterest(c) ) {
         // keep track of the line number and the character position here.
-
-
+        if(c == '\n'){
+            lineNumber++;
+        }
+        charPosition++;
     }
 
     //declarations
@@ -45,6 +47,7 @@ Token Tokenizer::getToken() {
     if( inputStream.eof() ) {
         token.endOfFile() = true;
     } else if( c == '<' ) {
+        charPosition++;
         // Immediately after an open angle-bracket, we will have to see
         // the tag name. That is, at this point, inputStream.peek() should
         // be a letter. If it is, then read the tag name, create an
@@ -54,15 +57,19 @@ Token Tokenizer::getToken() {
         if(std::isalpha(peekingChar)){ //checking if the peekingChar is an alphabetical character
 
             inputStream.get(carryingChar); //getting the first letter
+            charPosition++;
             while(carryingChar != '>' && carryingChar != ' ')
             {
+
                 tName += carryingChar; //add the next character to tName (name of tag)
                 inputStream.get(carryingChar);
+                charPosition++;
 
 
                 if(carryingChar == '>')
                 {
                     inputStream.putback(carryingChar);
+                    charPosition--;
                 }
 
             }
@@ -72,9 +79,11 @@ Token Tokenizer::getToken() {
         }else if(peekingChar == '/'){
 
             inputStream.get(carryingChar);
-            //TODO: Need to implement both the counter, as well as the stand alone tag
+            charPosition++;
+            //TODO: implement stand alone tag
             if(carryingChar == '>')
             {
+
                 token.isCloseStandAloneTag() = true;
                 token.isCloseAngleBracket() = false;
             }
@@ -82,9 +91,11 @@ Token Tokenizer::getToken() {
 
                 tName += carryingChar;
                 inputStream.get(carryingChar);
+                charPosition++;
 
                 if(carryingChar == '>'){
                     inputStream.putback(carryingChar);
+                    charPosition--;
                 }
 
             }
@@ -101,7 +112,10 @@ Token Tokenizer::getToken() {
                token.makeOpenTag(tName);
             */
     } else if( c == '>') {
+        charPosition++;
         token.isCloseAngleBracket() = true;
+    }else{
+        return token;
     }
     // ... more if-else statements here, followed by a final else.
 

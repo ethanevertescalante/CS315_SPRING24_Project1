@@ -45,7 +45,7 @@ void Token::print() {
     }else if(isCloseAngleBracket()){
         std::cout << ">" << std::endl;
     }else if(isCloseTag()){
-        std::cout << "<" << _tagName << std::endl;
+        std::cout << "<" << tagName() << std::endl;
     }else {  // more else if's before this else
         std::cout << "Unknown token\n";
     }
