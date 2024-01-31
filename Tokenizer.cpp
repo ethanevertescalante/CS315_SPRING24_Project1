@@ -15,32 +15,31 @@ Tokenizer::Tokenizer(std::string name): lineNumber{1},
 bool Tokenizer::charOfInterest(char c) {
     // is c the initial (or the sole) character of a token?
 
-    if(c == '<' || c == '>' || c == '/') //special characters that we have to keep track of
-    {
-        return true; // if c is charOfInterest, then return true
+    if(c == '<' || c == '>' || c == '/'){ // if c is charOfInterest, then return true
+        return true;
     }
-
-    return false; //or else no char of interest
-
+    return false;
 }
 
 Token Tokenizer::getToken() {
     char c;
 
-    if( ! inputStream.is_open()) {
+    if( ! inputStream.is_open() ) {
         std::cout << "Tokenizer::getToken() called with a stream that is not open." << std::endl;
         std::cout << "Make sure that " << inputFileName << " exists and is readable. Terminating.";
         exit(2);
     }
 
-    while( inputStream.get(c) && ! charOfInterest(c) ) {
+    while( inputStream.get(c) && !charOfInterest(c) ) {
         // keep track of the line number and the character position here.
-        if(c == '\n') //check for new line
+        if(c == '\n')
         {
-            lineNumber++; //adding one to line number
+            lineNumber++;
         }
-        charPosition++;
+
+
     }
+
     //declarations
     char peekingChar = inputStream.peek();
     char carryingChar;
@@ -64,6 +63,10 @@ Token Tokenizer::getToken() {
             {
                 tName += carryingChar; //add the next character to tName (name of tag)
                 inputStream.get(carryingChar);
+                if(carryingChar == '>')
+                {
+                    inputStream.putback(carryingChar);
+                }
             }
 
 
@@ -71,11 +74,11 @@ Token Tokenizer::getToken() {
         else if(peekingChar == '/')
         {
             inputStream.get(carryingChar);
-            //TODO: according to the debugger, anytime there is a '>', it is skipped, causing a a Closetag to not be created, I believe that this code is causing this, figure it out
             while(carryingChar != ' ' && carryingChar != '>')
             {
                 tName += carryingChar;
                 inputStream.get(carryingChar);
+
             }
         }
 
@@ -90,19 +93,20 @@ Token Tokenizer::getToken() {
                std::string tName = "em"; // suppose we have read and stored em in tName -- this is a hard-coded example for demo
                token.makeOpenTag(tName);
             */
-    } else if( c == '>' ) {
+    } else if( c == '>') {
         token.isCloseAngleBracket() = true;
+
         token.makeCloseTag(tName);
-        return token;
     }else if(c == '/'){
-        if(inputStream.peek() == '>')
+        if(peekingChar == '>')
         {
             tName = '/' ;
-            token.isCloseAngleBracket() = true;
+            token.isCloseTag() = true;
             token.makeCloseTag(tName);
 
+        }else{
+            return token;
         }
-
     }
     // ... more if-else statements here, followed by a final else.
 

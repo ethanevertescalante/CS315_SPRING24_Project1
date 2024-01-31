@@ -5,22 +5,19 @@
 #include "Tokenizer.hpp"
 
 int main(int argc, char *argv[]) {
-/*
+
     if( argc != 2 ) {  // we expect the name of the file as an argument to the program.
         std::cout << "usage: " << argv[0] << " nameOfAnInputFile" << std::endl;
         exit(1);
     }
-  */
 
-    std::string  inputFile;
 
-    std::cout << "Input File: ";
-    std::cin >> inputFile;
+
     // Here, we open the file to make sure that it exists before starting the program.
     // When using CLion, the input file has to be in cmake-build-debug directory.
 
     std::ifstream inputStream;
-    inputStream.open(inputFile, std::ios::in);    // open for reading
+    inputStream.open(argv[1], std::ios::in);    // open for reading
     if( ! inputStream.is_open()) {
         std::cout << "Unable to open " << argv[1] << ". Terminating...";
         std::cout << strerror(errno) << std::endl;
@@ -41,7 +38,7 @@ int main(int argc, char *argv[]) {
 
     // this is what the main function for your solution to phase 1 should look like.
 
-    Tokenizer tokenizer(inputFile);
+    Tokenizer tokenizer(argv[1]);
     Token token = tokenizer.getToken();  // get the first token to start the while loop
 
     while( ! token.endOfFile()) {
