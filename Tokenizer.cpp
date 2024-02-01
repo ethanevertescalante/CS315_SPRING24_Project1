@@ -15,7 +15,16 @@ Tokenizer::Tokenizer(std::string name): lineNumber{1},
 bool Tokenizer::charOfInterest(char c) {
     // is c the initial (or the sole) character of a token
 
-    if(c == '<' || c == '>'){ // if c is charOfInterest, then return true
+    if(c == '<' || c == '>' || c == '/'){ // if c is charOfInterest, then return true
+        if (c =='/'){
+            inputStream.get(c);
+            if(c != '>')
+            {
+                return false;
+            }
+            inputStream.putback(c);
+        }
+
         return true;
     }
     return false;
@@ -79,14 +88,10 @@ Token Tokenizer::getToken() {
         }else if(peekingChar == '/'){
 
             inputStream.get(carryingChar);
+
             charPosition++;
             //TODO: implement stand alone tag
-            if(carryingChar == '>')
-            {
 
-                token.isCloseStandAloneTag() = true;
-                token.isCloseAngleBracket() = false;
-            }
             while(carryingChar != ' ' && carryingChar != '>') {
 
                 tName += carryingChar;
@@ -111,10 +116,19 @@ Token Tokenizer::getToken() {
                std::string tName = "em"; // suppose we have read and stored em in tName -- this is a hard-coded example for demo
                token.makeOpenTag(tName);
             */
-    } else if( c == '>') {
+    } else if( c == '/') {
+        charPosition++;
+        if(peekingChar == '>')
+        {
+            inputStream.get(carryingChar);
+            charPosition++;
+            token.isCloseStandAloneTag() = true;
+        }
+
+
+    }else{
         charPosition++;
         token.isCloseAngleBracket() = true;
-    }else{
         return token;
     }
     // ... more if-else statements here, followed by a final else.

@@ -41,7 +41,7 @@ void Token::print() {
     if(isOpenTag()) {
         std::cout << "<" << tagName() << std::endl;
     } else if(isCloseStandAloneTag()) {
-       std::cout << "/>";
+       std::cout << "/>" << std::endl;
     }else if(isCloseAngleBracket()){
         std::cout << ">" << std::endl;
     }else if(isCloseTag()){
