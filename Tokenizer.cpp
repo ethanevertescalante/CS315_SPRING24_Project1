@@ -14,15 +14,17 @@ Tokenizer::Tokenizer(std::string name): lineNumber{1},
 
 bool Tokenizer::charOfInterest(char c) {
     // is c the initial (or the sole) character of a token
-
     if(c == '<' || c == '>' || c == '/'){ // if c is charOfInterest, then return true
-        if (c =='/'){
-            inputStream.get(c);
-            if(c != '>')
+
+        if (c =='/'){ //for standalone tag
+            inputStream.get(c); //get next character
+            charPosition++; //add to position
+            if(c != '>') //if the next char is not a close bracket
             {
                 return false;
             }
-            inputStream.putback(c);
+            inputStream.putback(c); //else putback character
+            charPosition--; //sub position
         }
 
         return true;
@@ -41,13 +43,13 @@ Token Tokenizer::getToken() {
 
     while( inputStream.get(c) && !charOfInterest(c) ) {
         // keep track of the line number and the character position here.
-        if(c == '\n'){
+        if(c == '\n'){ //tracking line number
             lineNumber++;
         }
-        charPosition++;
+        charPosition++; //and character pos of non charOfInterest
     }
 
-    //declarations
+    //declarations that will be used in the following if statement
     char peekingChar = inputStream.peek();
     char carryingChar;
     std::string tName;
@@ -55,48 +57,52 @@ Token Tokenizer::getToken() {
     Token token(lineNumber, charPosition);
     if( inputStream.eof() ) {
         token.endOfFile() = true;
-    } else if( c == '<' ) {
-        charPosition++;
+    } else if( c == '<' ) { //open brackets
+        charPosition++; //add char pos
+
+
         // Immediately after an open angle-bracket, we will have to see
         // the tag name. That is, at this point, inputStream.peek() should
         // be a letter. If it is, then read the tag name, create an
         // open tag token for it. If inputStream.peek() is not a letter,
         // you will return a token that represents "random" open angle-bracket.
 
-        if(std::isalpha(peekingChar)){ //checking if the peekingChar is an alphabetical character
 
-            inputStream.get(carryingChar); //getting the first letter
+        if(std::isalpha(peekingChar)){
+            inputStream.get(carryingChar); //getting the character
+
             charPosition++;
-            while(carryingChar != '>' && carryingChar != ' ')
+
+            while(carryingChar != '>' && carryingChar != ' ') //making sure that the carrying character is not a space or '>'
             {
 
                 tName += carryingChar; //add the next character to tName (name of tag)
-                inputStream.get(carryingChar);
-                charPosition++;
+                inputStream.get(carryingChar); //get next character
+                charPosition++; //add to position
 
 
                 if(carryingChar == '>')
                 {
-                    inputStream.putback(carryingChar);
-                    charPosition--;
+                    inputStream.putback(carryingChar); //putback the '>' for it to not get missed
+                    charPosition--; //sub char pos
                 }
 
             }
 
-            token.makeOpenTag(tName);
+            token.makeOpenTag(tName); //make the open tag
 
         }else if(peekingChar == '/'){
 
-            inputStream.get(carryingChar);
+            inputStream.get(carryingChar); // get next character
 
-            charPosition++;
+            charPosition++; //add char pos
 
 
-            while(carryingChar != ' ' && carryingChar != '>') {
+            while(carryingChar != ' ' && carryingChar != '>') { //making sure that the carrying character is not a space or '>'
 
-                tName += carryingChar;
-                inputStream.get(carryingChar);
-                charPosition++;
+                tName += carryingChar; //add the next character to tName (name of tag)
+                inputStream.get(carryingChar); //get next character
+                charPosition++; //add to position
 
                 if(carryingChar == '>'){
                     inputStream.putback(carryingChar);
@@ -117,8 +123,8 @@ Token Tokenizer::getToken() {
                token.makeOpenTag(tName);
             */
     } else if( c == '/') {
-        charPosition++;
-        if(peekingChar == '>')
+        charPosition++; //add char pos
+        if(peekingChar == '>') //check for standalone close tag
         {
             inputStream.get(carryingChar);
             charPosition++;
@@ -126,7 +132,7 @@ Token Tokenizer::getToken() {
         }
 
 
-    }else{
+    }else{ //final case is if it is a '>'
         charPosition++;
         token.isCloseAngleBracket() = true;
         return token;
