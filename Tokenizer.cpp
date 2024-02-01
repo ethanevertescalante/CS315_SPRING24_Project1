@@ -90,7 +90,7 @@ Token Tokenizer::getToken() {
             inputStream.get(carryingChar);
 
             charPosition++;
-            //TODO: implement stand alone tag
+
 
             while(carryingChar != ' ' && carryingChar != '>') {
 
