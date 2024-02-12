@@ -21,6 +21,7 @@ bool Tokenizer::charOfInterest(char c) {
             charPosition++; //add to position
             if(c != '>') //if the next char is not a close bracket
             {
+
                 return false;
             }
             inputStream.putback(c); //else putback character
@@ -100,7 +101,9 @@ Token Tokenizer::getToken() {
 
             while(carryingChar != ' ' && carryingChar != '>') { //making sure that the carrying character is not a space or '>'
 
-                tName += carryingChar; //add the next character to tName (name of tag)
+                if(carryingChar != '/') {
+                    tName += carryingChar; //add the next character to tName (name of tag)
+                }
                 inputStream.get(carryingChar); //get next character
                 charPosition++; //add to position
 
@@ -129,11 +132,13 @@ Token Tokenizer::getToken() {
             inputStream.get(carryingChar);
             charPosition++;
             token.isCloseStandAloneTag() = true;
+
         }
 
 
     }else{ //final case is if it is a '>'
         charPosition++;
+
         token.isCloseAngleBracket() = true;
         return token;
     }
