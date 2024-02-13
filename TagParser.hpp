@@ -18,9 +18,9 @@ private:
     TraversableStack stack;
     std::map<std::string, std::vector< std::pair<Token, Token> > > allTagLocations;
 
-    void handleOpenTag(Tokenizer &, Token &);
-    void handleCloseTag(Tokenizer &, Token &);
-    void handleStandAloneCloseTag(Token &);
+    void handleOpenTag(Tokenizer &tokenizer, Token &token);
+    void handleCloseTag(Tokenizer &tokenizer, Token &token);
+    void handleStandAloneCloseTag(Token &token);
     void printWellFormedTags();
 
 };

@@ -6,9 +6,11 @@
 #include "Token.hpp"
 #include <iostream>
 
+
+
 void TagParser::parseTags(std::string nameOfInputFile) {
     Tokenizer tokenizer(nameOfInputFile);
-    TraversableStack traversableStack;
+
 
     Token token = tokenizer.getToken();
     while (!token.endOfFile()) {
@@ -28,23 +30,26 @@ void TagParser::parseTags(std::string nameOfInputFile) {
     }
 // tokens have finished, but you want to determine if
 // there are any open tags that have not been matched.
-   while(!traversableStack.empty()){
-       Token noMatchingCloseTag = traversableStack.last();
+
+    while(!stack.empty()){
+       Token noMatchingCloseTag = stack.last();
        noMatchingCloseTag.print();
        std:: cout << "doesn't have a matching close tag. Will discard it." << std::endl;
-       traversableStack.rremove(noMatchingCloseTag.tagName())
+       stack.rremove(noMatchingCloseTag.tagName());
    }
-}
-
-void TagParser::handleOpenTag(Tokenizer &, Token &) {
 
 }
 
-void TagParser::handleCloseTag(Tokenizer &, Token &) {
+void TagParser::handleOpenTag(Tokenizer &tokenizer, Token &token) {
+
 
 }
 
-void TagParser::handleStandAloneCloseTag(Token &) {
+void TagParser::handleCloseTag(Tokenizer &tokenizer, Token &token) {
+
+}
+
+void TagParser::handleStandAloneCloseTag(Token &token) {
 
 }
 
