@@ -110,11 +110,41 @@ CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.s"
 	C:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Ethan\CLionProjects\ethanevertescalante\Tokenizer.cpp -o CMakeFiles\cs315_project1_phase1.dir\Tokenizer.cpp.s
 
+CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj: CMakeFiles/cs315_project1_phase1.dir/flags.make
+CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj: C:/Users/Ethan/CLionProjects/ethanevertescalante/TraversableStack.cpp
+CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj: CMakeFiles/cs315_project1_phase1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Ethan\CLionProjects\ethanevertescalante\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj"
+	C:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj -MF CMakeFiles\cs315_project1_phase1.dir\TraversableStack.cpp.obj.d -o CMakeFiles\cs315_project1_phase1.dir\TraversableStack.cpp.obj -c C:\Users\Ethan\CLionProjects\ethanevertescalante\TraversableStack.cpp
+
+CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.i"
+	C:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Ethan\CLionProjects\ethanevertescalante\TraversableStack.cpp > CMakeFiles\cs315_project1_phase1.dir\TraversableStack.cpp.i
+
+CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.s"
+	C:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Ethan\CLionProjects\ethanevertescalante\TraversableStack.cpp -o CMakeFiles\cs315_project1_phase1.dir\TraversableStack.cpp.s
+
+CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj: CMakeFiles/cs315_project1_phase1.dir/flags.make
+CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj: C:/Users/Ethan/CLionProjects/ethanevertescalante/TagParser.cpp
+CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj: CMakeFiles/cs315_project1_phase1.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Ethan\CLionProjects\ethanevertescalante\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj"
+	C:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj -MF CMakeFiles\cs315_project1_phase1.dir\TagParser.cpp.obj.d -o CMakeFiles\cs315_project1_phase1.dir\TagParser.cpp.obj -c C:\Users\Ethan\CLionProjects\ethanevertescalante\TagParser.cpp
+
+CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.i"
+	C:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Ethan\CLionProjects\ethanevertescalante\TagParser.cpp > CMakeFiles\cs315_project1_phase1.dir\TagParser.cpp.i
+
+CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.s"
+	C:\MinGW\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Ethan\CLionProjects\ethanevertescalante\TagParser.cpp -o CMakeFiles\cs315_project1_phase1.dir\TagParser.cpp.s
+
 # Object files for target cs315_project1_phase1
 cs315_project1_phase1_OBJECTS = \
 "CMakeFiles/cs315_project1_phase1.dir/main.cpp.obj" \
 "CMakeFiles/cs315_project1_phase1.dir/Token.cpp.obj" \
-"CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.obj"
+"CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.obj" \
+"CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj" \
+"CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj"
 
 # External object files for target cs315_project1_phase1
 cs315_project1_phase1_EXTERNAL_OBJECTS =
@@ -122,11 +152,13 @@ cs315_project1_phase1_EXTERNAL_OBJECTS =
 cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/main.cpp.obj
 cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/Token.cpp.obj
 cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.obj
+cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj
+cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj
 cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/build.make
 cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/linkLibs.rsp
 cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/objects1
 cs315_project1_phase1.exe: CMakeFiles/cs315_project1_phase1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Ethan\CLionProjects\ethanevertescalante\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable cs315_project1_phase1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Ethan\CLionProjects\ethanevertescalante\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable cs315_project1_phase1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\cs315_project1_phase1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj"
+  "CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj.d"
   "CMakeFiles/cs315_project1_phase1.dir/Token.cpp.obj"
   "CMakeFiles/cs315_project1_phase1.dir/Token.cpp.obj.d"
   "CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.obj"
   "CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.obj.d"
+  "CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj"
+  "CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj.d"
   "CMakeFiles/cs315_project1_phase1.dir/main.cpp.obj"
   "CMakeFiles/cs315_project1_phase1.dir/main.cpp.obj.d"
   "cs315_project1_phase1.exe"

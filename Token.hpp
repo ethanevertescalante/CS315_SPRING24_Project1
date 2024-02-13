@@ -14,6 +14,7 @@ public:
     bool &isCloseTag();
 
     bool &isCloseAngleBracket();
+    bool &isOpenAngleBracket();
 
     bool &endOfFile();
     bool &isCloseStandAloneTag();
@@ -26,7 +27,7 @@ public:
 
 private:
     bool _isOpenTag = false, _isCloseTag = false, _isCloseAngleBracket = false,
-            _eof = false, _isCloseStandAloneTag = false;
+            _eof = false, _isCloseStandAloneTag = false, _isOpenAngleBracket = false;
 
     std::string _tagName;
     int _lineNumber, _charPos;

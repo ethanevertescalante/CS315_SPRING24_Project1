@@ -19,6 +19,7 @@ bool &Token::isOpenTag() { return _isOpenTag; }
 bool &Token::isCloseTag() { return _isCloseTag; }
 
 bool &Token::isCloseAngleBracket() { return _isCloseAngleBracket; }
+bool &Token::isOpenAngleBracket() {return _isCloseAngleBracket;}
 
 bool &Token::endOfFile() { return _eof; }
 bool &Token::isCloseStandAloneTag() { return _isCloseStandAloneTag; }
@@ -46,6 +47,8 @@ void Token::print() {
         std::cout << ">" << std::endl;
     }else if(isCloseTag()){
         std::cout << "</" << tagName() << std::endl;
+    }else if(isOpenAngleBracket()){
+        std::cout << "<" << std::endl;
     }else {  // more else if's before this else
         std::cout << "Unknown token\n";
     }

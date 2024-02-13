@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Ethan/CLionProjects/ethanevertescalante/TagParser.cpp">
+			<Option target="cs315_project1_phase1"/>
+		</Unit>
+		<Unit filename="C:/Users/Ethan/CLionProjects/ethanevertescalante/TagParser.hpp">
+			<Option target="cs315_project1_phase1"/>
+		</Unit>
 		<Unit filename="C:/Users/Ethan/CLionProjects/ethanevertescalante/Token.cpp">
 			<Option target="cs315_project1_phase1"/>
 		</Unit>
@@ -90,6 +96,12 @@
 			<Option target="cs315_project1_phase1"/>
 		</Unit>
 		<Unit filename="C:/Users/Ethan/CLionProjects/ethanevertescalante/Tokenizer.hpp">
+			<Option target="cs315_project1_phase1"/>
+		</Unit>
+		<Unit filename="C:/Users/Ethan/CLionProjects/ethanevertescalante/TraversableStack.cpp">
+			<Option target="cs315_project1_phase1"/>
+		</Unit>
+		<Unit filename="C:/Users/Ethan/CLionProjects/ethanevertescalante/TraversableStack.hpp">
 			<Option target="cs315_project1_phase1"/>
 		</Unit>
 		<Unit filename="C:/Users/Ethan/CLionProjects/ethanevertescalante/main.cpp">

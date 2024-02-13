@@ -128,6 +128,30 @@ cs315_project1_phase1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/build
 .PHONY : cs315_project1_phase1/fast
 
+TagParser.obj: TagParser.cpp.obj
+.PHONY : TagParser.obj
+
+# target to build an object file
+TagParser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj
+.PHONY : TagParser.cpp.obj
+
+TagParser.i: TagParser.cpp.i
+.PHONY : TagParser.i
+
+# target to preprocess a source file
+TagParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.i
+.PHONY : TagParser.cpp.i
+
+TagParser.s: TagParser.cpp.s
+.PHONY : TagParser.s
+
+# target to generate assembly for a file
+TagParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.s
+.PHONY : TagParser.cpp.s
+
 Token.obj: Token.cpp.obj
 .PHONY : Token.obj
 
@@ -176,6 +200,30 @@ Tokenizer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.s
 .PHONY : Tokenizer.cpp.s
 
+TraversableStack.obj: TraversableStack.cpp.obj
+.PHONY : TraversableStack.obj
+
+# target to build an object file
+TraversableStack.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj
+.PHONY : TraversableStack.cpp.obj
+
+TraversableStack.i: TraversableStack.cpp.i
+.PHONY : TraversableStack.i
+
+# target to preprocess a source file
+TraversableStack.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.i
+.PHONY : TraversableStack.cpp.i
+
+TraversableStack.s: TraversableStack.cpp.s
+.PHONY : TraversableStack.s
+
+# target to generate assembly for a file
+TraversableStack.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\cs315_project1_phase1.dir\build.make CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.s
+.PHONY : TraversableStack.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -209,12 +257,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... cs315_project1_phase1
+	@echo ... TagParser.obj
+	@echo ... TagParser.i
+	@echo ... TagParser.s
 	@echo ... Token.obj
 	@echo ... Token.i
 	@echo ... Token.s
 	@echo ... Tokenizer.obj
 	@echo ... Tokenizer.i
 	@echo ... Tokenizer.s
+	@echo ... TraversableStack.obj
+	@echo ... TraversableStack.i
+	@echo ... TraversableStack.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

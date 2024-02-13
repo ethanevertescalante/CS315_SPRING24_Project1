@@ -8,8 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/Ethan/CLionProjects/ethanevertescalante/TagParser.cpp" "CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj" "gcc" "CMakeFiles/cs315_project1_phase1.dir/TagParser.cpp.obj.d"
   "C:/Users/Ethan/CLionProjects/ethanevertescalante/Token.cpp" "CMakeFiles/cs315_project1_phase1.dir/Token.cpp.obj" "gcc" "CMakeFiles/cs315_project1_phase1.dir/Token.cpp.obj.d"
   "C:/Users/Ethan/CLionProjects/ethanevertescalante/Tokenizer.cpp" "CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.obj" "gcc" "CMakeFiles/cs315_project1_phase1.dir/Tokenizer.cpp.obj.d"
+  "C:/Users/Ethan/CLionProjects/ethanevertescalante/TraversableStack.cpp" "CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj" "gcc" "CMakeFiles/cs315_project1_phase1.dir/TraversableStack.cpp.obj.d"
   "C:/Users/Ethan/CLionProjects/ethanevertescalante/main.cpp" "CMakeFiles/cs315_project1_phase1.dir/main.cpp.obj" "gcc" "CMakeFiles/cs315_project1_phase1.dir/main.cpp.obj.d"
   )
 
