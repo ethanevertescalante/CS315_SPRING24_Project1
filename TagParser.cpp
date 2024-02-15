@@ -18,6 +18,8 @@ void TagParser::parseTags(std::string nameOfInputFile) {
             handleOpenTag(tokenizer, token);
         else if( token.isCloseTag() )
             handleCloseTag(tokenizer, token);
+        else if(token.isCloseStandAloneTag())
+            handleStandAloneCloseTag(token);
         else if(token.isCloseAngleBracket() || token.isOpenAngleBracket()) {
             token.print();
             std::cout << (token.isCloseAngleBracket() ? " ignoring random close angle-bracket."
@@ -26,7 +28,7 @@ void TagParser::parseTags(std::string nameOfInputFile) {
             token.print();
             std::cout << " unknown token."  << std::endl;
         }
-        token = tokenizer.getToken();
+        token = tokenizer.getToken(); //get next token
     }
 // tokens have finished, but you want to determine if
 // there are any open tags that have not been matched.
@@ -41,12 +43,22 @@ void TagParser::parseTags(std::string nameOfInputFile) {
 }
 
 void TagParser::handleOpenTag(Tokenizer &tokenizer, Token &token) {
-
+    stack.addLast(token);
+    token = tokenizer.getToken();
+    if(!token.isCloseAngleBracket())
+    {
+        stack.popLast();
+    }
 
 }
 
 void TagParser::handleCloseTag(Tokenizer &tokenizer, Token &token) {
-
+    stack.addLast(token);
+    token = tokenizer.getToken();
+    if(!token.isCloseAngleBracket())
+    {
+        stack.popLast();
+    }
 }
 
 void TagParser::handleStandAloneCloseTag(Token &token) {
@@ -55,6 +67,8 @@ void TagParser::handleStandAloneCloseTag(Token &token) {
 
 void TagParser::printWellFormedTags() {
     std::cout << "The following is a list of well-formed HTML tags." << std::endl;
+
+
 
 
 }

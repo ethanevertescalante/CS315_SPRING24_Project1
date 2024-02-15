@@ -88,6 +88,7 @@ Token Tokenizer::getToken() {
                     charPosition--; //sub char pos
                 }
 
+
             }
 
             token.makeOpenTag(tName); //make the open tag
