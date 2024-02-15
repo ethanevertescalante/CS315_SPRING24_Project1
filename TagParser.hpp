@@ -25,7 +25,7 @@ private:
     void handleOpenTag(Tokenizer &tokenizer, Token &token);
     void handleCloseTag(Tokenizer &tokenizer, Token &token);
 
-    void handleStandAloneCloseTag(Token &token);
+    void handleStandAloneCloseTag(Token &ftoken);
     void printWellFormedTags();
 
 };

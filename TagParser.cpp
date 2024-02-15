@@ -53,12 +53,35 @@ void TagParser::handleOpenTag(Tokenizer &tokenizer, Token &token) {
 }
 
 void TagParser::handleCloseTag(Tokenizer &tokenizer, Token &token) {
+    std::string nameTag = token.tagName();
     stack.addLast(token);
     token = tokenizer.getToken();
     if(!token.isCloseAngleBracket())
     {
         stack.popLast();
     }
+
+    while(stack.rmember(nameTag))
+    {
+
+        if(token.isOpenTag())
+        {
+            token = openClosePair.first;
+            stack.rremove(nameTag);
+        }
+
+        if(token.isCloseTag())
+        {
+            token = openClosePair.second;
+            stack.rremove(nameTag);
+        }
+
+    }
+
+    tagLocations.push_back(openClosePair);
+    //allTagLocations.in
+
+
 }
 
 void TagParser::handleStandAloneCloseTag(Token &token) {
@@ -67,8 +90,30 @@ void TagParser::handleStandAloneCloseTag(Token &token) {
 
 void TagParser::printWellFormedTags() {
     std::cout << "The following is a list of well-formed HTML tags." << std::endl;
+/*
+    for (const auto &pair: allTagLocations) {
+
+        std::cout << pair.first << " appeared in the following " << " locations." << std::endl;
+        const auto &vector = pair.second;
+
+        for (const auto &pair2: vector) {
+            // std::cout << "[" << std::setw(2) << pair2.first.line() << ", " << std::setw(3) << pair2.first.pos() << "] <" << pair2.first.tagName() << " -- ";
+            // std::cout << "[" << std::setw(2) << pair2.second.line() << ", " << std::setw(3) << pair2.second.pos() << "] </" << pair2.second.tagName() << std::endl;
+        }
+
+    }
+*/
+    for (auto mapIter = allTagLocations.begin(); mapIter != allTagLocations.end(); ++mapIter) {
+        // our map, pairs an array of Tokens with tag-name strings.
+        std::vector<std::pair<Token, Token>> locations = mapIter->second;
+        for(auto vIter = locations.begin(); vIter != locations.end(); ++vIter) {
+            // Each element in the vector is a pair of tokens.
+            vIter->first.print();
+            std::cout << " -- ";
+            vIter->second.print();
+            std::cout << std::endl;
+        }
 
 
-
-
+    }
 }
