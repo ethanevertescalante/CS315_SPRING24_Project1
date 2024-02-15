@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cstring>
 #include "Tokenizer.hpp"
+#include "TagParser.hpp"
 
 int main(int argc, char *argv[]) {
 
@@ -39,13 +40,17 @@ int main(int argc, char *argv[]) {
     // this is what the main function for your solution to phase 1 should look like.
 
     Tokenizer tokenizer(argv[1]);
-    Token token = tokenizer.getToken();  // get the first token to start the while loop
-
+    Token token = tokenizer.getToken();
+    // get the first token to start the while loop
+    TagParser tagParser;
+/*
     while( ! token.endOfFile()) {
         token.print();
+        tagParser.parseTags(argv[1]);
         token = tokenizer.getToken();
     }
-
+ */
+    tagParser.parseTags(argv[1]);
 
     return 0;
 }

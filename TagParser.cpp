@@ -6,11 +6,14 @@
 #include "Token.hpp"
 #include <iostream>
 
+TagParser::TagParser(): stack{TraversableStack()}, openClosePair{OpenToken, CloseToken}{
+
+}
+
 
 
 void TagParser::parseTags(std::string nameOfInputFile) {
     Tokenizer tokenizer(nameOfInputFile);
-
 
     Token token = tokenizer.getToken();
     while (!token.endOfFile()) {
@@ -36,9 +39,11 @@ void TagParser::parseTags(std::string nameOfInputFile) {
     while(!stack.empty()){
        Token noMatchingCloseTag = stack.last();
        noMatchingCloseTag.print();
-       std:: cout << "doesn't have a matching close tag. Will discard it." << std::endl;
+       std:: cout << " doesn't have a matching close tag. Will discard it." << std::endl;
        stack.rremove(noMatchingCloseTag.tagName());
    }
+
+    printWellFormedTags();
 
 }
 
@@ -63,6 +68,7 @@ void TagParser::handleCloseTag(Tokenizer &tokenizer, Token &token) {
 
     while(stack.rmember(nameTag))
     {
+
 
         if(token.isOpenTag())
         {
@@ -90,21 +96,10 @@ void TagParser::handleStandAloneCloseTag(Token &token) {
 
 void TagParser::printWellFormedTags() {
     std::cout << "The following is a list of well-formed HTML tags." << std::endl;
-/*
-    for (const auto &pair: allTagLocations) {
 
-        std::cout << pair.first << " appeared in the following " << " locations." << std::endl;
-        const auto &vector = pair.second;
-
-        for (const auto &pair2: vector) {
-            // std::cout << "[" << std::setw(2) << pair2.first.line() << ", " << std::setw(3) << pair2.first.pos() << "] <" << pair2.first.tagName() << " -- ";
-            // std::cout << "[" << std::setw(2) << pair2.second.line() << ", " << std::setw(3) << pair2.second.pos() << "] </" << pair2.second.tagName() << std::endl;
-        }
-
-    }
-*/
     for (auto mapIter = allTagLocations.begin(); mapIter != allTagLocations.end(); ++mapIter) {
         // our map, pairs an array of Tokens with tag-name strings.
+        std::cout << mapIter->first << " appeared in the following " << mapIter->first.size() << " location(s)." << std::endl;
         std::vector<std::pair<Token, Token>> locations = mapIter->second;
         for(auto vIter = locations.begin(); vIter != locations.end(); ++vIter) {
             // Each element in the vector is a pair of tokens.
