@@ -16,22 +16,21 @@ public:
 
 private:
     TraversableStack stack;
-
-  /*
-   TODO: NOT ORIGINALLY IN THIS CLASS, PUT SOMEWHERE ELSE
-    std::pair<Token, Token> openClosePair;
-    Token OpenToken = openClosePair.first;
-    Token CloseToken = openClosePair.second;
-    std::vector< std::pair<Token,Token> > tagLocations;
-*/
-
     std::map<std::string, std::vector< std::pair<Token, Token> > > allTagLocations;
+
+    Token openTag;
+    Token closeTag;
+
+    std::vector< std::pair<Token, Token> > tagLocations;
+
+
 
     void handleOpenTag(Tokenizer &tokenizer, Token &token);
     void handleCloseTag(Tokenizer &tokenizer, Token &token);
-
     void handleStandAloneCloseTag(Token &token);
     void printWellFormedTags();
+    void pairTokens(std::string tagName);
+    void mapPair(std::string tagName, std::pair<Token, Token>  pairTags);
 
 };
 

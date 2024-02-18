@@ -40,16 +40,16 @@ void Token::print() {
     std::cout << "[" << std::setw(2) << _lineNumber << ", " <<  std::setw(3) << _charPos << "] ";
 
     if(isOpenTag()) {
-        std::cout << "<" << tagName() << std::endl;
+        std::cout << "<" << tagName();
     } else if(isCloseStandAloneTag()) {
-       std::cout << "/>" << std::endl;
+        std::cout << "/>";
     }else if(isCloseAngleBracket()){
-        std::cout << ">" << std::endl;
+        std::cout << ">";
     }else if(isCloseTag()){
-        std::cout << "</" << tagName() << std::endl;
+        std::cout << "</" << tagName();
     }else if(isOpenAngleBracket()){
         std::cout << "<" << std::endl;
     }else {  // more else if's before this else
-        std::cout << "Unknown token\n";
+        std::cout << "Unknown token";
     }
 }
